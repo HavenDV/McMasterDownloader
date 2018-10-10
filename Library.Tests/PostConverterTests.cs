@@ -1,11 +1,4 @@
-using System;
-using System.IO;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-// ReSharper disable StringLiteralTypo
 
 namespace MainLibrary.Tests
 {
@@ -556,6 +549,703 @@ Content-Disposition: form-data; name=""d2l_statePageId""
                     { new StringContent(@""{1:['gridpagenum','search','pagenum'],2:['lcs'],3:['grid','pagesize','htmleditor','hpg']}""), ""d2l_stateScopes"" },
                     { new StringContent(@""""), ""d2l_stateGroups"" },
                     { new StringContent(@""325""), ""d2l_statePageId"" }";
+
+            var actual = PostConverter.Convert(input, "                    ");
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void ConverterTest3()
+        {
+            const string input = @"------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""d2l_action""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""d2l_actionparam""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""d2l_hitCode""
+1127947982593756752
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""d2l_rf""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""d2l_controlMapPrev""
+{'ID':{ctl_2:'z_a',ctl_4:'z_b',ctl_6:'z_c',hidden_tempfolderpath:'z_d',hidden_importlocation:'z_e',hidden_overwritefiles
+:'z_f',hidden_importmetadata:'z_g',hidden_dateoffset:'z_h',hidden_exportformat:'z_i',hidden_exportprotectedresources
+:'z_j',hidden_copyprotectedresources:'z_k',hidden_overwritecomponents:'z_l',hidden_copycourseid:'wizCopyCourseId'
+,hidden_copyfrom:'z_m',hidden_tools:'z_n',hidden_toolmethods:'z_o',hidden_toolnumbers:'z_p',hidden_selectedchat
+:'z_q',hidden_selectedchecklists:'z_r',hidden_selectedawards:'z_s',hidden_selectedcontent:'z_t',hidden_selecteddiscuss
+:'z_u',hidden_selecteddropbox:'z_v',hidden_selectedfaq:'z_w',hidden_selectedfiles:'z_x',hidden_selectedforms
+:'z_y',hidden_selectedglossary:'z_z',hidden_selectedgrades:'z_ba',hidden_selectedgradessettings:'z_bb'
+,hidden_selectedgroups:'z_bc',hidden_selectedhomepages:'z_bd',hidden_selectedlinks:'z_be',hidden_selectednavbars
+:'z_bf',hidden_selectednavigation:'z_bg',hidden_selectednews:'z_bh',hidden_selectedquestionlibs:'z_bi'
+,hidden_selectedquizzes:'z_bj',hidden_selectedschedule:'z_bk',hidden_selectedselfassess:'z_bl',hidden_selectedsurveys
+:'z_bm',hidden_selectedwidgets:'z_bn',hidden_selectedcompetencies:'z_bo',hidden_selectedrubrics:'z_bp'
+,hidden_selectedtoolnames:'z_bq',hidden_selectedreleaseconditions:'z_br',hidden_selectedintelligentagents
+:'z_bs',hidden_selectedltilinks:'z_bt',hidden_selectedltitps:'z_bu',hidden_selectedattendanceregisters
+:'z_bv',hidden_includeassociatedfiles:'z_bw',hidden_associatedfileschecked:'z_bx',hidden_selecteds3model
+:'z_by',hidden_selectedcourseappearanceids:'z_bz',hidden_selectedlearningoutcomes:'z_ca',hidden_jobid
+:'z_cb',hidden_filename:'z_cc',lbl_schedule:'z_cd',lbl_numschedule:'z_ce',lbl_content:'z_cf',lbl_numcontent
+:'z_cg',lbl_discuss:'z_ch',lbl_numdiscuss:'z_ci',lbl_dropbox:'z_cj',lbl_numdropbox:'z_ck',lbl_grades
+:'z_cl',lbl_numgrades:'z_cm',lbl_questionlibrary:'z_cn',lbl_numquestionlibrary:'z_co',lbl_quizzes:'z_cp'
+,lbl_numquizzes:'z_cq',lbl_rubrics:'z_cr',lbl_numrubrics:'z_cs',lbl_courseappearance:'z_ct',lbl_numcourseappearance
+:'z_cu',h_exportfiles:'z_cv',ctl_8:'z_cw',cb_exportfiles:'z_cx',ctl_messagearea:'z_cy'},'SID':{}}
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizTempFolderPath""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizImportLocation""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizOverwriteFiles""
+False
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizImportMetadata""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizDateOffset""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizExportFormat""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizExportProtectedResources""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizCopyProtectedResources""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizOverwriteComponents""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizCopyCourseId""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizCopyFrom""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizTools""
+true,true,true,true,false,true,false,false,false,false,false,false,true,true,false,false,false,true,false
+,true
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizToolMethods""
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizToolNumbers""
+48,33,12,48,0,23,0,0,0,0,0,0,10,81,0,0,0,1,0,1
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedChat""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedChecklists""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedAwards""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedContent""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedDiscuss""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedDropbox""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedFaq""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedFiles""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedForms""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedGlossary""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedGrades""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedGradesSettings""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedGroups""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedHomepages""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedLinks""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedNavbars""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedNavigation""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedNews""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedQuestionLibs""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedQuizzes""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedSchedule""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedSelfAssess""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedSurveys""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedWidgets""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedCompetencies""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedRubrics""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedToolNames""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedReleaseConditions""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedIntelligentAgents""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedLtiLinks""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedLtiTPs""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedAttendanceRegisters""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizIncludeAssociatedFiles""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizAssociatedFilesChecked""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedS3Model""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedCourseAppearanceIds""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizSelectedLearningOutcomes""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizJobId""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""wizFileName""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""d2l_controlMap""
+[{'ctl_2':['z_a','Button',['Next(192371);;return false;'],{},0,0],'ctl_4':['z_b','Button',['Back(192371
+);;return false;'],{},0,0],'ctl_6':['z_c','Button',['var n=new D2L.NavInfo();n.navigation=\u0027\\\/d2l
+\\\/lms\\\/importexport\\\/import_export.d2l\u0027;Nav.Go(n, false, false);return false;'],{},0,0],'hidden_tempfolderpath'
+:['z_d','Hidden',[1],{},0,1],'hidden_importlocation':['z_e','Hidden',[1],{},0,1],'hidden_overwritefiles'
+:['z_f','Hidden',[1],{},0,1],'hidden_importmetadata':['z_g','Hidden',[1],{},0,1],'hidden_dateoffset'
+:['z_h','Hidden',[1],{},0,1],'hidden_exportformat':['z_i','Hidden',[1],{},0,1],'hidden_exportprotectedresources'
+:['z_j','Hidden',[1],{},0,1],'hidden_copyprotectedresources':['z_k','Hidden',[1],{},0,1],'hidden_overwritecomponents'
+:['z_l','Hidden',[1],{},0,1],'hidden_copycourseid':['wizCopyCourseId','Hidden',[1],{},0,1],'hidden_copyfrom'
+:['z_m','Hidden',[1],{},0,1],'hidden_tools':['z_n','Hidden',[1],{},0,1],'hidden_toolmethods':['z_o','Hidden'
+,[1],{},0,1],'hidden_toolnumbers':['z_p','Hidden',[1],{},0,1],'hidden_selectedchat':['z_q','Hidden',
+[1],{},0,1],'hidden_selectedchecklists':['z_r','Hidden',[1],{},0,1],'hidden_selectedawards':['z_s','Hidden'
+,[1],{},0,1],'hidden_selectedcontent':['z_t','Hidden',[1],{},0,1],'hidden_selecteddiscuss':['z_u','Hidden'
+,[1],{},0,1],'hidden_selecteddropbox':['z_v','Hidden',[1],{},0,1],'hidden_selectedfaq':['z_w','Hidden'
+,[1],{},0,1],'hidden_selectedfiles':['z_x','Hidden',[1],{},0,1],'hidden_selectedforms':['z_y','Hidden'
+,[1],{},0,1],'hidden_selectedglossary':['z_z','Hidden',[1],{},0,1],'hidden_selectedgrades':['z_ba','Hidden'
+,[1],{},0,1],'hidden_selectedgradessettings':['z_bb','Hidden',[1],{},0,1],'hidden_selectedgroups':['z_bc'
+,'Hidden',[1],{},0,1],'hidden_selectedhomepages':['z_bd','Hidden',[1],{},0,1],'hidden_selectedlinks'
+:['z_be','Hidden',[1],{},0,1],'hidden_selectednavbars':['z_bf','Hidden',[1],{},0,1],'hidden_selectednavigation'
+:['z_bg','Hidden',[1],{},0,1],'hidden_selectednews':['z_bh','Hidden',[1],{},0,1],'hidden_selectedquestionlibs'
+:['z_bi','Hidden',[1],{},0,1],'hidden_selectedquizzes':['z_bj','Hidden',[1],{},0,1],'hidden_selectedschedule'
+:['z_bk','Hidden',[1],{},0,1],'hidden_selectedselfassess':['z_bl','Hidden',[1],{},0,1],'hidden_selectedsurveys'
+:['z_bm','Hidden',[1],{},0,1],'hidden_selectedwidgets':['z_bn','Hidden',[1],{},0,1],'hidden_selectedcompetencies'
+:['z_bo','Hidden',[1],{},0,1],'hidden_selectedrubrics':['z_bp','Hidden',[1],{},0,1],'hidden_selectedtoolnames'
+:['z_bq','Hidden',[1],{},0,1],'hidden_selectedreleaseconditions':['z_br','Hidden',[1],{},0,1],'hidden_selectedintelligentagents'
+:['z_bs','Hidden',[1],{},0,1],'hidden_selectedltilinks':['z_bt','Hidden',[1],{},0,1],'hidden_selectedltitps'
+:['z_bu','Hidden',[1],{},0,1],'hidden_selectedattendanceregisters':['z_bv','Hidden',[1],{},0,1],'hidden_includeassociatedfiles'
+:['z_bw','Hidden',[1],{},0,1],'hidden_associatedfileschecked':['z_bx','Hidden',[1],{},0,1],'hidden_selecteds3model'
+:['z_by','Hidden',[1],{},0,1],'hidden_selectedcourseappearanceids':['z_bz','Hidden',[1],{},0,1],'hidden_selectedlearningoutcomes'
+:['z_ca','Hidden',[1],{},0,1],'hidden_jobid':['z_cb','Hidden',[1],{},0,1],'hidden_filename':['z_cc','Hidden'
+,[1],{},0,1],'lbl_schedule':['z_cd','Label',[],{},0,1],'lbl_numschedule':['z_ce','Label',[],{},0,1],'lbl_content'
+:['z_cf','Label',[],{},0,1],'lbl_numcontent':['z_cg','Label',[],{},0,1],'lbl_discuss':['z_ch','Label'
+,[],{},0,1],'lbl_numdiscuss':['z_ci','Label',[],{},0,1],'lbl_dropbox':['z_cj','Label',[],{},0,1],'lbl_numdropbox'
+:['z_ck','Label',[],{},0,1],'lbl_grades':['z_cl','Label',[],{},0,1],'lbl_numgrades':['z_cm','Label',
+[],{},0,1],'lbl_questionlibrary':['z_cn','Label',[],{},0,1],'lbl_numquestionlibrary':['z_co','Label'
+,[],{},0,1],'lbl_quizzes':['z_cp','Label',[],{},0,1],'lbl_numquizzes':['z_cq','Label',[],{},0,1],'lbl_rubrics'
+:['z_cr','Label',[],{},0,1],'lbl_numrubrics':['z_cs','Label',[],{},0,1],'lbl_courseappearance':['z_ct'
+,'Label',[],{},0,1],'lbl_numcourseappearance':['z_cu','Label',[],{},0,1],'h_exportfiles':['z_cv','Heading'
+,[0,0,1],{},0,1],'ctl_8':['z_cw','Field',[],,1,1],'cb_exportfiles':['z_cx','Checkbox',[1,1,1],{},0,1
+],'ctl_messagearea':['z_cy','MessageArea',['d_content_inner','d_page_header',0,[],null,null],{},0,0]
+},{}]
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""d2l_state""
+[{'3':['grid','pagesize','htmleditor','hpg'],'1':['gridpagenum','search','pagenum'],'2':['lcs']},[]]
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""d2l_referrer""
+7jwxcGGfaBJLFMscPLVOiKt5ITrkZhn1
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""d2l_multiedit""
+{'Controls':[]}
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""d2l_stateScopes""
+{1:['gridpagenum','search','pagenum'],2:['lcs'],3:['grid','pagesize','htmleditor','hpg']}
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""d2l_stateGroups""
+------WebKitFormBoundaryUfjfOAHDHOwapOt4
+Content-Disposition: form-data; name=""d2l_statePageId""
+327
+------WebKitFormBoundaryUfjfOAHDHOwapOt4--";
+
+            const string expected = @"                    { new StringContent(@""""), ""d2l_action"" },
+                    { new StringContent(@""""), ""d2l_actionparam"" },
+                    { new StringContent(@""1127947982593756752""), ""d2l_hitCode"" },
+                    { new StringContent(@""""), ""d2l_rf"" },
+                    { new StringContent(@""{'ID':{ctl_2:'z_a',ctl_4:'z_b',ctl_6:'z_c',hidden_tempfolderpath:'z_d',hidden_importlocation:'z_e',hidden_overwritefiles
+:'z_f',hidden_importmetadata:'z_g',hidden_dateoffset:'z_h',hidden_exportformat:'z_i',hidden_exportprotectedresources
+:'z_j',hidden_copyprotectedresources:'z_k',hidden_overwritecomponents:'z_l',hidden_copycourseid:'wizCopyCourseId'
+,hidden_copyfrom:'z_m',hidden_tools:'z_n',hidden_toolmethods:'z_o',hidden_toolnumbers:'z_p',hidden_selectedchat
+:'z_q',hidden_selectedchecklists:'z_r',hidden_selectedawards:'z_s',hidden_selectedcontent:'z_t',hidden_selecteddiscuss
+:'z_u',hidden_selecteddropbox:'z_v',hidden_selectedfaq:'z_w',hidden_selectedfiles:'z_x',hidden_selectedforms
+:'z_y',hidden_selectedglossary:'z_z',hidden_selectedgrades:'z_ba',hidden_selectedgradessettings:'z_bb'
+,hidden_selectedgroups:'z_bc',hidden_selectedhomepages:'z_bd',hidden_selectedlinks:'z_be',hidden_selectednavbars
+:'z_bf',hidden_selectednavigation:'z_bg',hidden_selectednews:'z_bh',hidden_selectedquestionlibs:'z_bi'
+,hidden_selectedquizzes:'z_bj',hidden_selectedschedule:'z_bk',hidden_selectedselfassess:'z_bl',hidden_selectedsurveys
+:'z_bm',hidden_selectedwidgets:'z_bn',hidden_selectedcompetencies:'z_bo',hidden_selectedrubrics:'z_bp'
+,hidden_selectedtoolnames:'z_bq',hidden_selectedreleaseconditions:'z_br',hidden_selectedintelligentagents
+:'z_bs',hidden_selectedltilinks:'z_bt',hidden_selectedltitps:'z_bu',hidden_selectedattendanceregisters
+:'z_bv',hidden_includeassociatedfiles:'z_bw',hidden_associatedfileschecked:'z_bx',hidden_selecteds3model
+:'z_by',hidden_selectedcourseappearanceids:'z_bz',hidden_selectedlearningoutcomes:'z_ca',hidden_jobid
+:'z_cb',hidden_filename:'z_cc',lbl_schedule:'z_cd',lbl_numschedule:'z_ce',lbl_content:'z_cf',lbl_numcontent
+:'z_cg',lbl_discuss:'z_ch',lbl_numdiscuss:'z_ci',lbl_dropbox:'z_cj',lbl_numdropbox:'z_ck',lbl_grades
+:'z_cl',lbl_numgrades:'z_cm',lbl_questionlibrary:'z_cn',lbl_numquestionlibrary:'z_co',lbl_quizzes:'z_cp'
+,lbl_numquizzes:'z_cq',lbl_rubrics:'z_cr',lbl_numrubrics:'z_cs',lbl_courseappearance:'z_ct',lbl_numcourseappearance
+:'z_cu',h_exportfiles:'z_cv',ctl_8:'z_cw',cb_exportfiles:'z_cx',ctl_messagearea:'z_cy'},'SID':{}}""), ""d2l_controlMapPrev"" },
+                    { new StringContent(@""""), ""wizTempFolderPath"" },
+                    { new StringContent(@""""), ""wizImportLocation"" },
+                    { new StringContent(@""False""), ""wizOverwriteFiles"" },
+                    { new StringContent(@""""), ""wizImportMetadata"" },
+                    { new StringContent(@""""), ""wizDateOffset"" },
+                    { new StringContent(@""""), ""wizExportFormat"" },
+                    { new StringContent(@""""), ""wizExportProtectedResources"" },
+                    { new StringContent(@""""), ""wizCopyProtectedResources"" },
+                    { new StringContent(@""""), ""wizOverwriteComponents"" },
+                    { new StringContent(@""""), ""wizCopyCourseId"" },
+                    { new StringContent(@""""), ""wizCopyFrom"" },
+                    { new StringContent(@""true,true,true,true,false,true,false,false,false,false,false,false,true,true,false,false,false,true,false
+,true""), ""wizTools"" },
+                    { new StringContent(@""1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,""), ""wizToolMethods"" },
+                    { new StringContent(@""48,33,12,48,0,23,0,0,0,0,0,0,10,81,0,0,0,1,0,1""), ""wizToolNumbers"" },
+                    { new StringContent(@""""), ""wizSelectedChat"" },
+                    { new StringContent(@""""), ""wizSelectedChecklists"" },
+                    { new StringContent(@""""), ""wizSelectedAwards"" },
+                    { new StringContent(@""""), ""wizSelectedContent"" },
+                    { new StringContent(@""""), ""wizSelectedDiscuss"" },
+                    { new StringContent(@""""), ""wizSelectedDropbox"" },
+                    { new StringContent(@""""), ""wizSelectedFaq"" },
+                    { new StringContent(@""""), ""wizSelectedFiles"" },
+                    { new StringContent(@""""), ""wizSelectedForms"" },
+                    { new StringContent(@""""), ""wizSelectedGlossary"" },
+                    { new StringContent(@""""), ""wizSelectedGrades"" },
+                    { new StringContent(@""""), ""wizSelectedGradesSettings"" },
+                    { new StringContent(@""""), ""wizSelectedGroups"" },
+                    { new StringContent(@""""), ""wizSelectedHomepages"" },
+                    { new StringContent(@""""), ""wizSelectedLinks"" },
+                    { new StringContent(@""""), ""wizSelectedNavbars"" },
+                    { new StringContent(@""""), ""wizSelectedNavigation"" },
+                    { new StringContent(@""""), ""wizSelectedNews"" },
+                    { new StringContent(@""""), ""wizSelectedQuestionLibs"" },
+                    { new StringContent(@""""), ""wizSelectedQuizzes"" },
+                    { new StringContent(@""""), ""wizSelectedSchedule"" },
+                    { new StringContent(@""""), ""wizSelectedSelfAssess"" },
+                    { new StringContent(@""""), ""wizSelectedSurveys"" },
+                    { new StringContent(@""""), ""wizSelectedWidgets"" },
+                    { new StringContent(@""""), ""wizSelectedCompetencies"" },
+                    { new StringContent(@""""), ""wizSelectedRubrics"" },
+                    { new StringContent(@""""), ""wizSelectedToolNames"" },
+                    { new StringContent(@""""), ""wizSelectedReleaseConditions"" },
+                    { new StringContent(@""""), ""wizSelectedIntelligentAgents"" },
+                    { new StringContent(@""""), ""wizSelectedLtiLinks"" },
+                    { new StringContent(@""""), ""wizSelectedLtiTPs"" },
+                    { new StringContent(@""""), ""wizSelectedAttendanceRegisters"" },
+                    { new StringContent(@""""), ""wizIncludeAssociatedFiles"" },
+                    { new StringContent(@""""), ""wizAssociatedFilesChecked"" },
+                    { new StringContent(@""""), ""wizSelectedS3Model"" },
+                    { new StringContent(@""""), ""wizSelectedCourseAppearanceIds"" },
+                    { new StringContent(@""""), ""wizSelectedLearningOutcomes"" },
+                    { new StringContent(@""""), ""wizJobId"" },
+                    { new StringContent(@""""), ""wizFileName"" },
+                    { new StringContent(@""[{'ctl_2':['z_a','Button',['Next(192371);;return false;'],{},0,0],'ctl_4':['z_b','Button',['Back(192371
+);;return false;'],{},0,0],'ctl_6':['z_c','Button',['var n=new D2L.NavInfo();n.navigation=\u0027\\\/d2l
+\\\/lms\\\/importexport\\\/import_export.d2l\u0027;Nav.Go(n, false, false);return false;'],{},0,0],'hidden_tempfolderpath'
+:['z_d','Hidden',[1],{},0,1],'hidden_importlocation':['z_e','Hidden',[1],{},0,1],'hidden_overwritefiles'
+:['z_f','Hidden',[1],{},0,1],'hidden_importmetadata':['z_g','Hidden',[1],{},0,1],'hidden_dateoffset'
+:['z_h','Hidden',[1],{},0,1],'hidden_exportformat':['z_i','Hidden',[1],{},0,1],'hidden_exportprotectedresources'
+:['z_j','Hidden',[1],{},0,1],'hidden_copyprotectedresources':['z_k','Hidden',[1],{},0,1],'hidden_overwritecomponents'
+:['z_l','Hidden',[1],{},0,1],'hidden_copycourseid':['wizCopyCourseId','Hidden',[1],{},0,1],'hidden_copyfrom'
+:['z_m','Hidden',[1],{},0,1],'hidden_tools':['z_n','Hidden',[1],{},0,1],'hidden_toolmethods':['z_o','Hidden'
+,[1],{},0,1],'hidden_toolnumbers':['z_p','Hidden',[1],{},0,1],'hidden_selectedchat':['z_q','Hidden',
+[1],{},0,1],'hidden_selectedchecklists':['z_r','Hidden',[1],{},0,1],'hidden_selectedawards':['z_s','Hidden'
+,[1],{},0,1],'hidden_selectedcontent':['z_t','Hidden',[1],{},0,1],'hidden_selecteddiscuss':['z_u','Hidden'
+,[1],{},0,1],'hidden_selecteddropbox':['z_v','Hidden',[1],{},0,1],'hidden_selectedfaq':['z_w','Hidden'
+,[1],{},0,1],'hidden_selectedfiles':['z_x','Hidden',[1],{},0,1],'hidden_selectedforms':['z_y','Hidden'
+,[1],{},0,1],'hidden_selectedglossary':['z_z','Hidden',[1],{},0,1],'hidden_selectedgrades':['z_ba','Hidden'
+,[1],{},0,1],'hidden_selectedgradessettings':['z_bb','Hidden',[1],{},0,1],'hidden_selectedgroups':['z_bc'
+,'Hidden',[1],{},0,1],'hidden_selectedhomepages':['z_bd','Hidden',[1],{},0,1],'hidden_selectedlinks'
+:['z_be','Hidden',[1],{},0,1],'hidden_selectednavbars':['z_bf','Hidden',[1],{},0,1],'hidden_selectednavigation'
+:['z_bg','Hidden',[1],{},0,1],'hidden_selectednews':['z_bh','Hidden',[1],{},0,1],'hidden_selectedquestionlibs'
+:['z_bi','Hidden',[1],{},0,1],'hidden_selectedquizzes':['z_bj','Hidden',[1],{},0,1],'hidden_selectedschedule'
+:['z_bk','Hidden',[1],{},0,1],'hidden_selectedselfassess':['z_bl','Hidden',[1],{},0,1],'hidden_selectedsurveys'
+:['z_bm','Hidden',[1],{},0,1],'hidden_selectedwidgets':['z_bn','Hidden',[1],{},0,1],'hidden_selectedcompetencies'
+:['z_bo','Hidden',[1],{},0,1],'hidden_selectedrubrics':['z_bp','Hidden',[1],{},0,1],'hidden_selectedtoolnames'
+:['z_bq','Hidden',[1],{},0,1],'hidden_selectedreleaseconditions':['z_br','Hidden',[1],{},0,1],'hidden_selectedintelligentagents'
+:['z_bs','Hidden',[1],{},0,1],'hidden_selectedltilinks':['z_bt','Hidden',[1],{},0,1],'hidden_selectedltitps'
+:['z_bu','Hidden',[1],{},0,1],'hidden_selectedattendanceregisters':['z_bv','Hidden',[1],{},0,1],'hidden_includeassociatedfiles'
+:['z_bw','Hidden',[1],{},0,1],'hidden_associatedfileschecked':['z_bx','Hidden',[1],{},0,1],'hidden_selecteds3model'
+:['z_by','Hidden',[1],{},0,1],'hidden_selectedcourseappearanceids':['z_bz','Hidden',[1],{},0,1],'hidden_selectedlearningoutcomes'
+:['z_ca','Hidden',[1],{},0,1],'hidden_jobid':['z_cb','Hidden',[1],{},0,1],'hidden_filename':['z_cc','Hidden'
+,[1],{},0,1],'lbl_schedule':['z_cd','Label',[],{},0,1],'lbl_numschedule':['z_ce','Label',[],{},0,1],'lbl_content'
+:['z_cf','Label',[],{},0,1],'lbl_numcontent':['z_cg','Label',[],{},0,1],'lbl_discuss':['z_ch','Label'
+,[],{},0,1],'lbl_numdiscuss':['z_ci','Label',[],{},0,1],'lbl_dropbox':['z_cj','Label',[],{},0,1],'lbl_numdropbox'
+:['z_ck','Label',[],{},0,1],'lbl_grades':['z_cl','Label',[],{},0,1],'lbl_numgrades':['z_cm','Label',
+[],{},0,1],'lbl_questionlibrary':['z_cn','Label',[],{},0,1],'lbl_numquestionlibrary':['z_co','Label'
+,[],{},0,1],'lbl_quizzes':['z_cp','Label',[],{},0,1],'lbl_numquizzes':['z_cq','Label',[],{},0,1],'lbl_rubrics'
+:['z_cr','Label',[],{},0,1],'lbl_numrubrics':['z_cs','Label',[],{},0,1],'lbl_courseappearance':['z_ct'
+,'Label',[],{},0,1],'lbl_numcourseappearance':['z_cu','Label',[],{},0,1],'h_exportfiles':['z_cv','Heading'
+,[0,0,1],{},0,1],'ctl_8':['z_cw','Field',[],,1,1],'cb_exportfiles':['z_cx','Checkbox',[1,1,1],{},0,1
+],'ctl_messagearea':['z_cy','MessageArea',['d_content_inner','d_page_header',0,[],null,null],{},0,0]
+},{}]""), ""d2l_controlMap"" },
+                    { new StringContent(@""[{'3':['grid','pagesize','htmleditor','hpg'],'1':['gridpagenum','search','pagenum'],'2':['lcs']},[]]""), ""d2l_state"" },
+                    { new StringContent(@""7jwxcGGfaBJLFMscPLVOiKt5ITrkZhn1""), ""d2l_referrer"" },
+                    { new StringContent(@""{'Controls':[]}""), ""d2l_multiedit"" },
+                    { new StringContent(@""{1:['gridpagenum','search','pagenum'],2:['lcs'],3:['grid','pagesize','htmleditor','hpg']}""), ""d2l_stateScopes"" },
+                    { new StringContent(@""""), ""d2l_stateGroups"" },
+                    { new StringContent(@""327""), ""d2l_statePageId"" }";
+
+            var actual = PostConverter.Convert(input, "                    ");
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void ConverterTest4()
+        {
+            const string input = @"------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""d2l_action""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""d2l_actionparam""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""d2l_hitCode""
+981141282554513772
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""d2l_rf""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""d2l_controlMapPrev""
+{'ID':{ctl_2:'z_a',hidden_tempfolderpath:'z_b',hidden_importlocation:'z_c',hidden_overwritefiles:'z_d'
+,hidden_importmetadata:'z_e',hidden_dateoffset:'z_f',hidden_exportformat:'z_g',hidden_exportprotectedresources
+:'z_h',hidden_copyprotectedresources:'z_i',hidden_overwritecomponents:'z_j',hidden_copycourseid:'wizCopyCourseId'
+,hidden_copyfrom:'z_k',hidden_tools:'z_l',hidden_toolmethods:'z_m',hidden_toolnumbers:'z_n',hidden_selectedchat
+:'z_o',hidden_selectedchecklists:'z_p',hidden_selectedawards:'z_q',hidden_selectedcontent:'z_r',hidden_selecteddiscuss
+:'z_s',hidden_selecteddropbox:'z_t',hidden_selectedfaq:'z_u',hidden_selectedfiles:'z_v',hidden_selectedforms
+:'z_w',hidden_selectedglossary:'z_x',hidden_selectedgrades:'z_y',hidden_selectedgradessettings:'z_z'
+,hidden_selectedgroups:'z_ba',hidden_selectedhomepages:'z_bb',hidden_selectedlinks:'z_bc',hidden_selectednavbars
+:'z_bd',hidden_selectednavigation:'z_be',hidden_selectednews:'z_bf',hidden_selectedquestionlibs:'z_bg'
+,hidden_selectedquizzes:'z_bh',hidden_selectedschedule:'z_bi',hidden_selectedselfassess:'z_bj',hidden_selectedsurveys
+:'z_bk',hidden_selectedwidgets:'z_bl',hidden_selectedcompetencies:'z_bm',hidden_selectedrubrics:'z_bn'
+,hidden_selectedtoolnames:'z_bo',hidden_selectedreleaseconditions:'z_bp',hidden_selectedintelligentagents
+:'z_bq',hidden_selectedltilinks:'z_br',hidden_selectedltitps:'z_bs',hidden_selectedattendanceregisters
+:'z_bt',hidden_includeassociatedfiles:'z_bu',hidden_associatedfileschecked:'z_bv',hidden_selecteds3model
+:'z_bw',hidden_selectedcourseappearanceids:'z_bx',hidden_selectedlearningoutcomes:'z_by',hidden_jobid
+:'z_bz',hidden_filename:'z_ca',lbl_export:'z_cb',lbl_sumexport:'exportLabelId',lbl_content:'z_cc',lbl_sumcontent
+:'contentLabelId',lbl_questionlibrary:'z_cd',lbl_sumquestionlibrary:'questionLibLabelId',lbl_quizzes
+:'z_ce',lbl_sumquizzes:'quizLabelId',lbl_discuss:'z_cf',lbl_sumdiscuss:'discussLabelId',lbl_dropbox:'z_cg'
+,lbl_sumdropbox:'dropboxLabelId',lbl_schedule:'z_ch',lbl_sumschedule:'scheduleLabelId',lbl_grades:'z_ci'
+,lbl_sumgrades:'gradeLabelId',lbl_rubrics:'z_cj',lbl_sumrubrics:'rubricsLabelId',lbl_courseappearance
+:'z_ck',lbl_sumcourseappearance:'courseAppearanceLabelId',hid_zipfile_path:'zipFilePath',hid_success
+:'success',hid_errormessage:'errorMessage',hid_warningmessage:'warningMessage',hd_exportfiles:'z_cl'
+,ctl_messagearea:'z_cm'},'SID':{}}
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizTempFolderPath""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizImportLocation""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizOverwriteFiles""
+False
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizImportMetadata""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizDateOffset""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizExportFormat""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizExportProtectedResources""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizCopyProtectedResources""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizOverwriteComponents""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizCopyCourseId""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizCopyFrom""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizTools""
+true,true,true,true,false,true,false,false,false,false,false,false,true,true,false,false,false,true,false
+,true
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizToolMethods""
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizToolNumbers""
+48,33,12,48,0,23,0,0,0,0,0,0,10,81,0,0,0,1,0,1
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedChat""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedChecklists""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedAwards""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedContent""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedDiscuss""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedDropbox""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedFaq""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedFiles""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedForms""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedGlossary""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedGrades""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedGradesSettings""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedGroups""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedHomepages""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedLinks""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedNavbars""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedNavigation""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedNews""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedQuestionLibs""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedQuizzes""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedSchedule""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedSelfAssess""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedSurveys""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedWidgets""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedCompetencies""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedRubrics""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedToolNames""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedReleaseConditions""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedIntelligentAgents""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedLtiLinks""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedLtiTPs""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedAttendanceRegisters""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizIncludeAssociatedFiles""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizAssociatedFilesChecked""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedS3Model""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedCourseAppearanceIds""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizSelectedLearningOutcomes""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizJobId""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""wizFileName""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""zipFilePath""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""success""
+true
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""errorMessage""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""warningMessage""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""exportFiles""
+False
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""d2l_controlMap""
+[{'ctl_2':['z_a','Button',['Done(192371);;return false;'],{},0,1],'hidden_tempfolderpath':['z_b','Hidden'
+,[1],{},0,1],'hidden_importlocation':['z_c','Hidden',[1],{},0,1],'hidden_overwritefiles':['z_d','Hidden'
+,[1],{},0,1],'hidden_importmetadata':['z_e','Hidden',[1],{},0,1],'hidden_dateoffset':['z_f','Hidden'
+,[1],{},0,1],'hidden_exportformat':['z_g','Hidden',[1],{},0,1],'hidden_exportprotectedresources':['z_h'
+,'Hidden',[1],{},0,1],'hidden_copyprotectedresources':['z_i','Hidden',[1],{},0,1],'hidden_overwritecomponents'
+:['z_j','Hidden',[1],{},0,1],'hidden_copycourseid':['wizCopyCourseId','Hidden',[1],{},0,1],'hidden_copyfrom'
+:['z_k','Hidden',[1],{},0,1],'hidden_tools':['z_l','Hidden',[1],{},0,1],'hidden_toolmethods':['z_m','Hidden'
+,[1],{},0,1],'hidden_toolnumbers':['z_n','Hidden',[1],{},0,1],'hidden_selectedchat':['z_o','Hidden',
+[1],{},0,1],'hidden_selectedchecklists':['z_p','Hidden',[1],{},0,1],'hidden_selectedawards':['z_q','Hidden'
+,[1],{},0,1],'hidden_selectedcontent':['z_r','Hidden',[1],{},0,1],'hidden_selecteddiscuss':['z_s','Hidden'
+,[1],{},0,1],'hidden_selecteddropbox':['z_t','Hidden',[1],{},0,1],'hidden_selectedfaq':['z_u','Hidden'
+,[1],{},0,1],'hidden_selectedfiles':['z_v','Hidden',[1],{},0,1],'hidden_selectedforms':['z_w','Hidden'
+,[1],{},0,1],'hidden_selectedglossary':['z_x','Hidden',[1],{},0,1],'hidden_selectedgrades':['z_y','Hidden'
+,[1],{},0,1],'hidden_selectedgradessettings':['z_z','Hidden',[1],{},0,1],'hidden_selectedgroups':['z_ba'
+,'Hidden',[1],{},0,1],'hidden_selectedhomepages':['z_bb','Hidden',[1],{},0,1],'hidden_selectedlinks'
+:['z_bc','Hidden',[1],{},0,1],'hidden_selectednavbars':['z_bd','Hidden',[1],{},0,1],'hidden_selectednavigation'
+:['z_be','Hidden',[1],{},0,1],'hidden_selectednews':['z_bf','Hidden',[1],{},0,1],'hidden_selectedquestionlibs'
+:['z_bg','Hidden',[1],{},0,1],'hidden_selectedquizzes':['z_bh','Hidden',[1],{},0,1],'hidden_selectedschedule'
+:['z_bi','Hidden',[1],{},0,1],'hidden_selectedselfassess':['z_bj','Hidden',[1],{},0,1],'hidden_selectedsurveys'
+:['z_bk','Hidden',[1],{},0,1],'hidden_selectedwidgets':['z_bl','Hidden',[1],{},0,1],'hidden_selectedcompetencies'
+:['z_bm','Hidden',[1],{},0,1],'hidden_selectedrubrics':['z_bn','Hidden',[1],{},0,1],'hidden_selectedtoolnames'
+:['z_bo','Hidden',[1],{},0,1],'hidden_selectedreleaseconditions':['z_bp','Hidden',[1],{},0,1],'hidden_selectedintelligentagents'
+:['z_bq','Hidden',[1],{},0,1],'hidden_selectedltilinks':['z_br','Hidden',[1],{},0,1],'hidden_selectedltitps'
+:['z_bs','Hidden',[1],{},0,1],'hidden_selectedattendanceregisters':['z_bt','Hidden',[1],{},0,1],'hidden_includeassociatedfiles'
+:['z_bu','Hidden',[1],{},0,1],'hidden_associatedfileschecked':['z_bv','Hidden',[1],{},0,1],'hidden_selecteds3model'
+:['z_bw','Hidden',[1],{},0,1],'hidden_selectedcourseappearanceids':['z_bx','Hidden',[1],{},0,1],'hidden_selectedlearningoutcomes'
+:['z_by','Hidden',[1],{},0,1],'hidden_jobid':['z_bz','Hidden',[1],{},0,1],'hidden_filename':['z_ca','Hidden'
+,[1],{},0,1],'lbl_export':['z_cb','Label',[],{},0,1],'lbl_sumexport':['exportLabelId','Label',[],{},0
+,1],'lbl_content':['z_cc','Label',[],{},0,1],'lbl_sumcontent':['contentLabelId','Label',[],{},0,1],'lbl_questionlibrary'
+:['z_cd','Label',[],{},0,1],'lbl_sumquestionlibrary':['questionLibLabelId','Label',[],{},0,1],'lbl_quizzes'
+:['z_ce','Label',[],{},0,1],'lbl_sumquizzes':['quizLabelId','Label',[],{},0,1],'lbl_discuss':['z_cf'
+,'Label',[],{},0,1],'lbl_sumdiscuss':['discussLabelId','Label',[],{},0,1],'lbl_dropbox':['z_cg','Label'
+,[],{},0,1],'lbl_sumdropbox':['dropboxLabelId','Label',[],{},0,1],'lbl_schedule':['z_ch','Label',[],
+{},0,1],'lbl_sumschedule':['scheduleLabelId','Label',[],{},0,1],'lbl_grades':['z_ci','Label',[],{},0
+,1],'lbl_sumgrades':['gradeLabelId','Label',[],{},0,1],'lbl_rubrics':['z_cj','Label',[],{},0,1],'lbl_sumrubrics'
+:['rubricsLabelId','Label',[],{},0,1],'lbl_courseappearance':['z_ck','Label',[],{},0,1],'lbl_sumcourseappearance'
+:['courseAppearanceLabelId','Label',[],{},0,1],'hid_zipfile_path':['zipFilePath','Hidden',[1],{},0,1
+],'hid_success':['success','Hidden',[1],{},0,1],'hid_errormessage':['errorMessage','Hidden',[],{},0,1
+],'hid_warningmessage':['warningMessage','Hidden',[],{},0,1],'hd_exportfiles':['z_cl','Hidden',[1],{
+},0,1],'ctl_messagearea':['z_cm','MessageArea',['d_content_inner','d_page_header',0,[],null,null],{}
+,0,0]},{}]
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""d2l_state""
+[{'3':['grid','pagesize','htmleditor','hpg'],'1':['gridpagenum','search','pagenum'],'2':['lcs']},[]]
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""d2l_referrer""
+JwJhym3c0GXWzZieW12yIWTDXNmXxmEC
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""d2l_multiedit""
+{'Controls':[]}
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""d2l_stateScopes""
+{1:['gridpagenum','search','pagenum'],2:['lcs'],3:['grid','pagesize','htmleditor','hpg']}
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""d2l_stateGroups""
+------WebKitFormBoundarySBC0p4S8vRcGo18I
+Content-Disposition: form-data; name=""d2l_statePageId""
+328
+------WebKitFormBoundarySBC0p4S8vRcGo18I--";
+
+            const string expected = @"                    { new StringContent(@""""), ""d2l_action"" },
+                    { new StringContent(@""""), ""d2l_actionparam"" },
+                    { new StringContent(@""981141282554513772""), ""d2l_hitCode"" },
+                    { new StringContent(@""""), ""d2l_rf"" },
+                    { new StringContent(@""{'ID':{ctl_2:'z_a',hidden_tempfolderpath:'z_b',hidden_importlocation:'z_c',hidden_overwritefiles:'z_d'
+,hidden_importmetadata:'z_e',hidden_dateoffset:'z_f',hidden_exportformat:'z_g',hidden_exportprotectedresources
+:'z_h',hidden_copyprotectedresources:'z_i',hidden_overwritecomponents:'z_j',hidden_copycourseid:'wizCopyCourseId'
+,hidden_copyfrom:'z_k',hidden_tools:'z_l',hidden_toolmethods:'z_m',hidden_toolnumbers:'z_n',hidden_selectedchat
+:'z_o',hidden_selectedchecklists:'z_p',hidden_selectedawards:'z_q',hidden_selectedcontent:'z_r',hidden_selecteddiscuss
+:'z_s',hidden_selecteddropbox:'z_t',hidden_selectedfaq:'z_u',hidden_selectedfiles:'z_v',hidden_selectedforms
+:'z_w',hidden_selectedglossary:'z_x',hidden_selectedgrades:'z_y',hidden_selectedgradessettings:'z_z'
+,hidden_selectedgroups:'z_ba',hidden_selectedhomepages:'z_bb',hidden_selectedlinks:'z_bc',hidden_selectednavbars
+:'z_bd',hidden_selectednavigation:'z_be',hidden_selectednews:'z_bf',hidden_selectedquestionlibs:'z_bg'
+,hidden_selectedquizzes:'z_bh',hidden_selectedschedule:'z_bi',hidden_selectedselfassess:'z_bj',hidden_selectedsurveys
+:'z_bk',hidden_selectedwidgets:'z_bl',hidden_selectedcompetencies:'z_bm',hidden_selectedrubrics:'z_bn'
+,hidden_selectedtoolnames:'z_bo',hidden_selectedreleaseconditions:'z_bp',hidden_selectedintelligentagents
+:'z_bq',hidden_selectedltilinks:'z_br',hidden_selectedltitps:'z_bs',hidden_selectedattendanceregisters
+:'z_bt',hidden_includeassociatedfiles:'z_bu',hidden_associatedfileschecked:'z_bv',hidden_selecteds3model
+:'z_bw',hidden_selectedcourseappearanceids:'z_bx',hidden_selectedlearningoutcomes:'z_by',hidden_jobid
+:'z_bz',hidden_filename:'z_ca',lbl_export:'z_cb',lbl_sumexport:'exportLabelId',lbl_content:'z_cc',lbl_sumcontent
+:'contentLabelId',lbl_questionlibrary:'z_cd',lbl_sumquestionlibrary:'questionLibLabelId',lbl_quizzes
+:'z_ce',lbl_sumquizzes:'quizLabelId',lbl_discuss:'z_cf',lbl_sumdiscuss:'discussLabelId',lbl_dropbox:'z_cg'
+,lbl_sumdropbox:'dropboxLabelId',lbl_schedule:'z_ch',lbl_sumschedule:'scheduleLabelId',lbl_grades:'z_ci'
+,lbl_sumgrades:'gradeLabelId',lbl_rubrics:'z_cj',lbl_sumrubrics:'rubricsLabelId',lbl_courseappearance
+:'z_ck',lbl_sumcourseappearance:'courseAppearanceLabelId',hid_zipfile_path:'zipFilePath',hid_success
+:'success',hid_errormessage:'errorMessage',hid_warningmessage:'warningMessage',hd_exportfiles:'z_cl'
+,ctl_messagearea:'z_cm'},'SID':{}}""), ""d2l_controlMapPrev"" },
+                    { new StringContent(@""""), ""wizTempFolderPath"" },
+                    { new StringContent(@""""), ""wizImportLocation"" },
+                    { new StringContent(@""False""), ""wizOverwriteFiles"" },
+                    { new StringContent(@""""), ""wizImportMetadata"" },
+                    { new StringContent(@""""), ""wizDateOffset"" },
+                    { new StringContent(@""""), ""wizExportFormat"" },
+                    { new StringContent(@""""), ""wizExportProtectedResources"" },
+                    { new StringContent(@""""), ""wizCopyProtectedResources"" },
+                    { new StringContent(@""""), ""wizOverwriteComponents"" },
+                    { new StringContent(@""""), ""wizCopyCourseId"" },
+                    { new StringContent(@""""), ""wizCopyFrom"" },
+                    { new StringContent(@""true,true,true,true,false,true,false,false,false,false,false,false,true,true,false,false,false,true,false
+,true""), ""wizTools"" },
+                    { new StringContent(@""1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,""), ""wizToolMethods"" },
+                    { new StringContent(@""48,33,12,48,0,23,0,0,0,0,0,0,10,81,0,0,0,1,0,1""), ""wizToolNumbers"" },
+                    { new StringContent(@""""), ""wizSelectedChat"" },
+                    { new StringContent(@""""), ""wizSelectedChecklists"" },
+                    { new StringContent(@""""), ""wizSelectedAwards"" },
+                    { new StringContent(@""""), ""wizSelectedContent"" },
+                    { new StringContent(@""""), ""wizSelectedDiscuss"" },
+                    { new StringContent(@""""), ""wizSelectedDropbox"" },
+                    { new StringContent(@""""), ""wizSelectedFaq"" },
+                    { new StringContent(@""""), ""wizSelectedFiles"" },
+                    { new StringContent(@""""), ""wizSelectedForms"" },
+                    { new StringContent(@""""), ""wizSelectedGlossary"" },
+                    { new StringContent(@""""), ""wizSelectedGrades"" },
+                    { new StringContent(@""""), ""wizSelectedGradesSettings"" },
+                    { new StringContent(@""""), ""wizSelectedGroups"" },
+                    { new StringContent(@""""), ""wizSelectedHomepages"" },
+                    { new StringContent(@""""), ""wizSelectedLinks"" },
+                    { new StringContent(@""""), ""wizSelectedNavbars"" },
+                    { new StringContent(@""""), ""wizSelectedNavigation"" },
+                    { new StringContent(@""""), ""wizSelectedNews"" },
+                    { new StringContent(@""""), ""wizSelectedQuestionLibs"" },
+                    { new StringContent(@""""), ""wizSelectedQuizzes"" },
+                    { new StringContent(@""""), ""wizSelectedSchedule"" },
+                    { new StringContent(@""""), ""wizSelectedSelfAssess"" },
+                    { new StringContent(@""""), ""wizSelectedSurveys"" },
+                    { new StringContent(@""""), ""wizSelectedWidgets"" },
+                    { new StringContent(@""""), ""wizSelectedCompetencies"" },
+                    { new StringContent(@""""), ""wizSelectedRubrics"" },
+                    { new StringContent(@""""), ""wizSelectedToolNames"" },
+                    { new StringContent(@""""), ""wizSelectedReleaseConditions"" },
+                    { new StringContent(@""""), ""wizSelectedIntelligentAgents"" },
+                    { new StringContent(@""""), ""wizSelectedLtiLinks"" },
+                    { new StringContent(@""""), ""wizSelectedLtiTPs"" },
+                    { new StringContent(@""""), ""wizSelectedAttendanceRegisters"" },
+                    { new StringContent(@""""), ""wizIncludeAssociatedFiles"" },
+                    { new StringContent(@""""), ""wizAssociatedFilesChecked"" },
+                    { new StringContent(@""""), ""wizSelectedS3Model"" },
+                    { new StringContent(@""""), ""wizSelectedCourseAppearanceIds"" },
+                    { new StringContent(@""""), ""wizSelectedLearningOutcomes"" },
+                    { new StringContent(@""""), ""wizJobId"" },
+                    { new StringContent(@""""), ""wizFileName"" },
+                    { new StringContent(@""""), ""zipFilePath"" },
+                    { new StringContent(@""true""), ""success"" },
+                    { new StringContent(@""""), ""errorMessage"" },
+                    { new StringContent(@""""), ""warningMessage"" },
+                    { new StringContent(@""False""), ""exportFiles"" },
+                    { new StringContent(@""[{'ctl_2':['z_a','Button',['Done(192371);;return false;'],{},0,1],'hidden_tempfolderpath':['z_b','Hidden'
+,[1],{},0,1],'hidden_importlocation':['z_c','Hidden',[1],{},0,1],'hidden_overwritefiles':['z_d','Hidden'
+,[1],{},0,1],'hidden_importmetadata':['z_e','Hidden',[1],{},0,1],'hidden_dateoffset':['z_f','Hidden'
+,[1],{},0,1],'hidden_exportformat':['z_g','Hidden',[1],{},0,1],'hidden_exportprotectedresources':['z_h'
+,'Hidden',[1],{},0,1],'hidden_copyprotectedresources':['z_i','Hidden',[1],{},0,1],'hidden_overwritecomponents'
+:['z_j','Hidden',[1],{},0,1],'hidden_copycourseid':['wizCopyCourseId','Hidden',[1],{},0,1],'hidden_copyfrom'
+:['z_k','Hidden',[1],{},0,1],'hidden_tools':['z_l','Hidden',[1],{},0,1],'hidden_toolmethods':['z_m','Hidden'
+,[1],{},0,1],'hidden_toolnumbers':['z_n','Hidden',[1],{},0,1],'hidden_selectedchat':['z_o','Hidden',
+[1],{},0,1],'hidden_selectedchecklists':['z_p','Hidden',[1],{},0,1],'hidden_selectedawards':['z_q','Hidden'
+,[1],{},0,1],'hidden_selectedcontent':['z_r','Hidden',[1],{},0,1],'hidden_selecteddiscuss':['z_s','Hidden'
+,[1],{},0,1],'hidden_selecteddropbox':['z_t','Hidden',[1],{},0,1],'hidden_selectedfaq':['z_u','Hidden'
+,[1],{},0,1],'hidden_selectedfiles':['z_v','Hidden',[1],{},0,1],'hidden_selectedforms':['z_w','Hidden'
+,[1],{},0,1],'hidden_selectedglossary':['z_x','Hidden',[1],{},0,1],'hidden_selectedgrades':['z_y','Hidden'
+,[1],{},0,1],'hidden_selectedgradessettings':['z_z','Hidden',[1],{},0,1],'hidden_selectedgroups':['z_ba'
+,'Hidden',[1],{},0,1],'hidden_selectedhomepages':['z_bb','Hidden',[1],{},0,1],'hidden_selectedlinks'
+:['z_bc','Hidden',[1],{},0,1],'hidden_selectednavbars':['z_bd','Hidden',[1],{},0,1],'hidden_selectednavigation'
+:['z_be','Hidden',[1],{},0,1],'hidden_selectednews':['z_bf','Hidden',[1],{},0,1],'hidden_selectedquestionlibs'
+:['z_bg','Hidden',[1],{},0,1],'hidden_selectedquizzes':['z_bh','Hidden',[1],{},0,1],'hidden_selectedschedule'
+:['z_bi','Hidden',[1],{},0,1],'hidden_selectedselfassess':['z_bj','Hidden',[1],{},0,1],'hidden_selectedsurveys'
+:['z_bk','Hidden',[1],{},0,1],'hidden_selectedwidgets':['z_bl','Hidden',[1],{},0,1],'hidden_selectedcompetencies'
+:['z_bm','Hidden',[1],{},0,1],'hidden_selectedrubrics':['z_bn','Hidden',[1],{},0,1],'hidden_selectedtoolnames'
+:['z_bo','Hidden',[1],{},0,1],'hidden_selectedreleaseconditions':['z_bp','Hidden',[1],{},0,1],'hidden_selectedintelligentagents'
+:['z_bq','Hidden',[1],{},0,1],'hidden_selectedltilinks':['z_br','Hidden',[1],{},0,1],'hidden_selectedltitps'
+:['z_bs','Hidden',[1],{},0,1],'hidden_selectedattendanceregisters':['z_bt','Hidden',[1],{},0,1],'hidden_includeassociatedfiles'
+:['z_bu','Hidden',[1],{},0,1],'hidden_associatedfileschecked':['z_bv','Hidden',[1],{},0,1],'hidden_selecteds3model'
+:['z_bw','Hidden',[1],{},0,1],'hidden_selectedcourseappearanceids':['z_bx','Hidden',[1],{},0,1],'hidden_selectedlearningoutcomes'
+:['z_by','Hidden',[1],{},0,1],'hidden_jobid':['z_bz','Hidden',[1],{},0,1],'hidden_filename':['z_ca','Hidden'
+,[1],{},0,1],'lbl_export':['z_cb','Label',[],{},0,1],'lbl_sumexport':['exportLabelId','Label',[],{},0
+,1],'lbl_content':['z_cc','Label',[],{},0,1],'lbl_sumcontent':['contentLabelId','Label',[],{},0,1],'lbl_questionlibrary'
+:['z_cd','Label',[],{},0,1],'lbl_sumquestionlibrary':['questionLibLabelId','Label',[],{},0,1],'lbl_quizzes'
+:['z_ce','Label',[],{},0,1],'lbl_sumquizzes':['quizLabelId','Label',[],{},0,1],'lbl_discuss':['z_cf'
+,'Label',[],{},0,1],'lbl_sumdiscuss':['discussLabelId','Label',[],{},0,1],'lbl_dropbox':['z_cg','Label'
+,[],{},0,1],'lbl_sumdropbox':['dropboxLabelId','Label',[],{},0,1],'lbl_schedule':['z_ch','Label',[],
+{},0,1],'lbl_sumschedule':['scheduleLabelId','Label',[],{},0,1],'lbl_grades':['z_ci','Label',[],{},0
+,1],'lbl_sumgrades':['gradeLabelId','Label',[],{},0,1],'lbl_rubrics':['z_cj','Label',[],{},0,1],'lbl_sumrubrics'
+:['rubricsLabelId','Label',[],{},0,1],'lbl_courseappearance':['z_ck','Label',[],{},0,1],'lbl_sumcourseappearance'
+:['courseAppearanceLabelId','Label',[],{},0,1],'hid_zipfile_path':['zipFilePath','Hidden',[1],{},0,1
+],'hid_success':['success','Hidden',[1],{},0,1],'hid_errormessage':['errorMessage','Hidden',[],{},0,1
+],'hid_warningmessage':['warningMessage','Hidden',[],{},0,1],'hd_exportfiles':['z_cl','Hidden',[1],{
+},0,1],'ctl_messagearea':['z_cm','MessageArea',['d_content_inner','d_page_header',0,[],null,null],{}
+,0,0]},{}]""), ""d2l_controlMap"" },
+                    { new StringContent(@""[{'3':['grid','pagesize','htmleditor','hpg'],'1':['gridpagenum','search','pagenum'],'2':['lcs']},[]]""), ""d2l_state"" },
+                    { new StringContent(@""JwJhym3c0GXWzZieW12yIWTDXNmXxmEC""), ""d2l_referrer"" },
+                    { new StringContent(@""{'Controls':[]}""), ""d2l_multiedit"" },
+                    { new StringContent(@""{1:['gridpagenum','search','pagenum'],2:['lcs'],3:['grid','pagesize','htmleditor','hpg']}""), ""d2l_stateScopes"" },
+                    { new StringContent(@""""), ""d2l_stateGroups"" },
+                    { new StringContent(@""328""), ""d2l_statePageId"" }";
 
             var actual = PostConverter.Convert(input, "                    ");
 
